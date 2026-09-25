@@ -1,0 +1,8 @@
+# Ignorar carpeta de dependencias
+__pycache__/
+
+# Ignorar archivos de entorno sensibles
+venv/
+
+# Ignorar archivos del sistema operativo
+sensores.db   
