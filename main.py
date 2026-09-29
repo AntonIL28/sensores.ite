@@ -6,7 +6,7 @@ import models, schemas
 from database import engine, SessionLocal
 import os
 import logging
-logging.warning(f"Variables de entorno disponibles: {list(os.environ.keys())}")
+logging.warning(f"DATABASE_URL valor: {os.environ.get('DATABASE_URL', 'NO DEFINIDA')[:30]}...")
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
