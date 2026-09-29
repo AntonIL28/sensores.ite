@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
 import models, schemas
 from database import engine, SessionLocal
+import database  # <-- agrégalo junto a tus otros imports
 import logging
 logging.warning(f"DATABASE_URL detectada: {database.DATABASE_URL[:40]}...")
 
