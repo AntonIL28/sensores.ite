@@ -4,9 +4,9 @@ from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
 import models, schemas
 from database import engine, SessionLocal
-import database  # <-- agrégalo junto a tus otros imports
+import os
 import logging
-logging.warning(f"DATABASE_URL detectada: {database.DATABASE_URL[:40]}...")
+logging.warning(f"Variables de entorno disponibles: {list(os.environ.keys())}")
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
