@@ -33,3 +33,10 @@ def crear_lectura(lectura: schemas.LecturaCreate, db: Session = Depends(get_db))
 @app.get("/lecturas", response_model=list[schemas.LecturaOut])
 def listar_lecturas(limit: int = 50, db: Session = Depends(get_db)):
     return db.query(models.Lectura).order_by(models.Lectura.id.desc()).limit(limit).all()
+
+@app.delete("/lecturas", dependencies=[Depends(verificar_admin)])
+def vaciar_lecturas(db: Session = Depends(get_db)):
+    """Borra TODAS las lecturas. Requiere el header x-admin-key."""
+    borradas = db.query(models.Lectura).delete()
+    db.commit()
+    return {"borradas": borradas}
